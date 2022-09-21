@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vM"
+            type="com.example.learn_binding.ResurseViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        tools:context=".FirstFragment">
+
+
+        <ImageView
+            android:id="@+id/p3_png"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="12dp"
+            android:contentDescription="@string/p3"
+            android:src="@drawable/p3"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_first"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textview_first"
+            style="@style/Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:text="@string/first_fragment"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@+id/button_first"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/button_first"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            style="@style/ButtonGreen"
+            android:id="@+id/take"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/take_money"
+            app:layout_constraintBottom_toTopOf="@+id/logout"
+            app:layout_constraintEnd_toEndOf="@+id/logout"
+            app:layout_constraintEnd_toStartOf="@+id/logout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fill" />
+
+        <Button
+            android:id="@+id/logout"
+            style="@style/ButtonGreen"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/logout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/take" />
+
+        <Button
+            style="@style/ButtonGreen"
+            android:id="@+id/remaining"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/remaining_resources"
+            app:layout_constraintBottom_toTopOf="@+id/fill"
+            app:layout_constraintEnd_toEndOf="@+id/fill"
+            app:layout_constraintEnd_toStartOf="@+id/fill"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/logout"
+            app:layout_constraintStart_toStartOf="@+id/fill"
+            app:layout_constraintTop_toBottomOf="@+id/button_first" />
+
+        <Button
+            style="@style/ButtonGreen"
+            android:id="@+id/fill"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/fill_resources"
+            app:layout_constraintBottom_toTopOf="@+id/take"
+            app:layout_constraintEnd_toEndOf="@+id/take"
+            app:layout_constraintEnd_toStartOf="@+id/button_first"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/remaining"
+            app:layout_constraintStart_toStartOf="@+id/take"
+            app:layout_constraintTop_toBottomOf="@+id/remaining" />
+
+        <Button
+            style="@style/ButtonGreen"
+            android:id="@+id/button_first"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/buy"
+            app:layout_constraintBottom_toTopOf="@+id/remaining"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/fill"
+            app:layout_constraintStart_toStartOf="@+id/remaining"
+            app:layout_constraintTop_toBottomOf="@+id/textview_first" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

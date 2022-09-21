@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".FirstFragment">
+
+    <ImageView
+        android:id="@+id/p3_png4"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="60dp"
+        android:contentDescription="@string/p3"
+        android:src="@drawable/p3"
+        app:layout_constraintBottom_toBottomOf="@+id/display"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.002"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/display"
+        style="@style/Resources"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="@string/fourth_fragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/money"
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/add_ron"
+        app:layout_constraintBottom_toTopOf="@+id/add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cups">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/bani"
+            android:maxLines="1"
+            android:inputType="number"
+            style="@style/TextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cups"
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/add_c"
+        app:layout_constraintBottom_toTopOf="@+id/money"
+        app:layout_constraintTop_toBottomOf="@+id/beans"
+        tools:layout_editor_absoluteX="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pahare"
+            android:maxLines="1"
+            android:inputType="number"
+            style="@style/TextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/beans"
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/add_b"
+        app:layout_constraintBottom_toTopOf="@+id/cups"
+        app:layout_constraintTop_toBottomOf="@+id/milk"
+        tools:layout_editor_absoluteX="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/boabe"
+            android:maxLines="1"
+            android:inputType="number"
+            style="@style/TextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/milk"
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/add_m"
+        app:layout_constraintBottom_toTopOf="@+id/beans"
+        app:layout_constraintTop_toBottomOf="@+id/water"
+        tools:layout_editor_absoluteX="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lapte"
+            android:maxLines="1"
+            android:inputType="number"
+            style="@style/TextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/water"
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/add_w"
+        app:layout_constraintBottom_toTopOf="@+id/milk"
+        app:layout_constraintTop_toBottomOf="@+id/display"
+        tools:layout_editor_absoluteX="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/apa"
+            android:maxLines="1"
+            android:inputType="number"
+            style="@style/TextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="@string/add_r"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/money" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

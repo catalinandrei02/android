@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "849548761785",
+    "firebase_url": "https://p3-digital-services-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "p3-digital-services",
+    "storage_bucket": "p3-digital-services.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849548761785:android:e74e40a17203115cb69968",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849548761785-m09efmssmdpbom3ujilcculgpp8ohjam.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvmV4VA3kqDqZTUhtHUGD4Q7bd7fnK4LI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849548761785-m09efmssmdpbom3ujilcculgpp8ohjam.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

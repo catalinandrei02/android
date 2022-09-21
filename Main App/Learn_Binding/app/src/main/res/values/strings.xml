@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">Coffe Machine</string>
+    <string name="action_logout">Log Out</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="succes">I have enough resources, making you a coffee!</string>
+    <string name="login">Welcome to P3, please log in.</string>
+    <string name="loginb">continue</string>
+    <string name="registerb">register</string>
+    <string name="first_fragment">Ready to make a coffe?</string>
+    <string name="second_fragment">What would you like do buy?</string>
+    <string name="third_fragment">The vending machine still has the following resources</string>
+    <string name="fourth_fragment">Hello Admin, please fill up the resources</string>
+    <string name="buy">BUY</string>
+    <string name="exit">EXIT</string>
+    <string name="fill_resources">FILL RESOURCES</string>
+    <string name="remaining_resources">REMAINING RESOURCES</string>
+    <string name="take_money">TAKE MONEY</string>
+    <string name="expesso">Expresso</string>
+    <string name="latte">Latte</string>
+    <string name="cappucino">Cappuccino</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="errW">Sorry, not enough Water!</string>
+    <string name="errM">Sorry, not enough Milk!</string>
+    <string name="errB">Sorry, not enough Coffe Beans!</string>
+    <string name="errC">Sorry, not enough Coffe Cups!</string>
+    <string name="check_w">%d ml of Water</string>
+    <string name="check_m">%d ml of Milk</string>
+    <string name="check_b">%d g of Coffe Beans</string>
+    <string name="check_c">%d Cups</string>
+    <string name="check_r">%d RON</string>
+    <string name="add_r">ADD RESOURCES</string>
+    <string name="add_w">Add amount of Water</string>
+    <string name="add_m">Add amount of Milk</string>
+    <string name="add_b">Add amount of Coffe Beans</string>
+    <string name="add_c">Add amount of Cups</string>
+    <string name="add_ron">Add amount of Money</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Register/Login-->
+    <string name="start_title">Hello</string>
+    <string name="welcome">Hello You!</string>
+    <string name="subtitle">
+        Nice to meet you, come join our community!
+        <br><b>Login</b> if you already have an account.</br>
+        <br><b>Register</b> to get started with the app.</br>
+    </string>
+    <string name="p3">business as unusual</string>
+    <string name="btn_register">REGISTER</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="login_title">Welcome to P3, please log in.</string>
+    <string name="login_subtitle"><font color="#00C988"><b>Login</b></font> if you already have an account.</string>
+    <string name="login_account">Your email</string>
+    <string name="login_password">Your password</string>
+    <string name="login_forgot_pw">Forgot Password?</string>
+    <string name="login_no_account">I don\'t have an account <font color="#00C988"><b>Register</b></font></string>
+    <string name="register_yes_account">I already have an account <font color="#00C988"><b>Login</b></font></string>
+    <string name="register_title">Create an account.</string>
+    <string name="register_subtitle"><font color="#00C988"><b>Register</b></font> to get started with the app.</string>
+    <string name="register_password">Password</string>
+    <string name="register_email">E-mail</string>
+    <string name="register_password_check">Confirm password</string>
+    <string name="register_username">Username</string>
+    <string name="register_fullname">Name</string>
+    <string name="logout">LOGOUT</string>
+    <string name="reset_title">Reset your password</string>
+    <string name="reset_pass">RESET PASSWORD</string>
+    <string name="reset_subtitle"><font color="#00C988"><b>Reset Password</b></font> if you forgot your password.</string>
+</resources>

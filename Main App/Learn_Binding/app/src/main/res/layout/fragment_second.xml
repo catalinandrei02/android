@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vM"
+            type="com.example.learn_binding.ResurseViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        tools:context=".SecondFragment">
+
+        <ImageView
+            android:id="@+id/p3_png2"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="96dp"
+            android:contentDescription="@string/p3"
+            android:src="@drawable/p3"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_first"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/expresso"
+            style="@style/ButtonGreen"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/expesso"
+
+            app:layout_constraintBottom_toTopOf="@+id/latte"
+            app:layout_constraintTop_toBottomOf="@+id/textview_first"
+            tools:layout_editor_absoluteX="20dp" />
+
+        <Button
+            android:id="@+id/cappuccino"
+            style="@style/ButtonGreen"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/cappucino"
+            app:layout_constraintBottom_toTopOf="@+id/button_second"
+            app:layout_constraintTop_toBottomOf="@+id/latte"
+            tools:layout_editor_absoluteX="20dp" />
+
+        <Button
+            android:id="@+id/latte"
+            style="@style/ButtonGreen"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/latte"
+            app:layout_constraintBottom_toTopOf="@+id/cappuccino"
+            app:layout_constraintTop_toBottomOf="@+id/expresso"
+            tools:layout_editor_absoluteX="20dp" />
+
+
+        <TextView
+            android:id="@+id/textview_first"
+            style="@style/Title"
+            android:layout_width="match_parent"
+            android:layout_height="111dp"
+            android:layout_marginTop="70dp"
+            android:text="@{vM.messageLiveData}"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@+id/expresso"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="@+id/expresso"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_second"
+            style="@style/ButtonGreen"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/previous"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cappuccino"
+            tools:layout_editor_absoluteX="20dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

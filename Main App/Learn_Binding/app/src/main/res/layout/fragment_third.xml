@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    <variable
+        name="vm"
+        type="com.example.learn_binding.ResurseViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        tools:context=".ThirdFragment">
+
+        <ImageView
+            android:id="@+id/p3_png3"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="68dp"
+            android:contentDescription="@string/p3"
+            android:src="@drawable/p3"
+            app:layout_constraintBottom_toBottomOf="@+id/display"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            style="@style/Resources"
+            android:id="@+id/display"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="70dp"
+            android:text="@string/third_fragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/Resources"
+            android:id="@+id/money"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/check_r"
+            app:layout_constraintBottom_toTopOf="@+id/exit"
+            app:layout_constraintTop_toBottomOf="@+id/cups"
+            tools:layout_editor_absoluteX="24dp" />
+
+        <TextView
+            style="@style/Resources"
+            android:id="@+id/beans"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/check_b"
+            app:layout_constraintBottom_toTopOf="@+id/cups"
+            app:layout_constraintTop_toBottomOf="@+id/milk"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            style="@style/Resources"
+            android:id="@+id/cups"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/check_c"
+            app:layout_constraintBottom_toTopOf="@+id/money"
+            app:layout_constraintTop_toBottomOf="@+id/beans"
+            tools:layout_editor_absoluteX="-42dp" />
+
+        <TextView
+            style="@style/Resources"
+            android:id="@+id/milk"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/check_m"
+            app:layout_constraintBottom_toTopOf="@+id/beans"
+            app:layout_constraintTop_toBottomOf="@+id/water"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            style="@style/Resources"
+            android:id="@+id/water"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/check_w"
+            app:layout_constraintBottom_toTopOf="@+id/milk"
+            app:layout_constraintTop_toBottomOf="@+id/display"
+            tools:layout_editor_absoluteX="20dp" />
+
+        <Button
+            style="@style/ButtonGreen"
+            android:id="@+id/exit"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/previous"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/money"
+            tools:layout_editor_absoluteX="20dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
