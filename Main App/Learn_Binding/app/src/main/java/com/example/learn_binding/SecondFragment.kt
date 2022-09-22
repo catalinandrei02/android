@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.learn_binding.databinding.FragmentSecondBinding
-import com.google.firebase.database.DatabaseReference
+
 
 class SecondFragment : Fragment() {
     //viewModel created

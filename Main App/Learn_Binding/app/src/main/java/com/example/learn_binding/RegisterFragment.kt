@@ -24,6 +24,7 @@ class RegisterFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

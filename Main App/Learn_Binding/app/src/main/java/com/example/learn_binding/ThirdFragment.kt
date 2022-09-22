@@ -8,10 +8,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.learn_binding.databinding.FragmentThirdBinding
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ThirdFragment : Fragment() {
     private val viewModel: ResurseViewModel by viewModels()
+    private val resourceCollectionRef = Firebase.firestore.collection("resurse")
     private var _binding: FragmentThirdBinding? = null
     private val binding get() = _binding!!
 
@@ -35,20 +41,30 @@ class ThirdFragment : Fragment() {
             findNavController().navigate(R.id.action_thirdFragment_to_FirstFragment)
         }
 
-        val remainingWater = binding.water
-        remainingWater.text = getString(R.string.check_w,viewModel.getWater().toInt())
-        val remainingMilk = binding.milk
-        remainingMilk.text = getString(R.string.check_m,viewModel.getMilk().toInt())
-        val remainingBeans = binding.beans
-        remainingBeans.text = getString(R.string.check_b,viewModel.getBeans().toInt())
-        val remainingCups = binding.cups
-        remainingCups.text = getString(R.string.check_c,viewModel.getCups().toInt())
-        val remainingMoney = binding.money
-        remainingMoney.text = getString(R.string.check_r,viewModel.getMoney().toInt())
+
+        binding.milk.text = getString(R.string.check_m,viewModel.getMilk().toInt())
+        binding.beans.text = getString(R.string.check_b,viewModel.getBeans().toInt())
+        binding.cups.text = getString(R.string.check_c,viewModel.getCups().toInt())
+        binding.money.text = getString(R.string.check_r,viewModel.getMoney().toInt())
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+    private fun retrieveResources() = CoroutineScope(Dispatchers.IO).launch {
+        try {
+            val querySnapshot = resourceCollectionRef.get()
+            val sb = StringBuilder()
+           /* for (document in querySnapshot){
+                val resurse = document.toObject<Resurse>()
+                sb.append("$resurse\n")
+            }*/
+        withContext(Dispatchers.Main){
+            binding.water.text = getString(R.string.check_w,sb.toString().toInt())
+        }
+        } catch (e: Exception) {
+
+        }
     }
 }

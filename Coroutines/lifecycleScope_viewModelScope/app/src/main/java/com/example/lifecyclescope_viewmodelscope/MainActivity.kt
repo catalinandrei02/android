@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         binding.btnNext.setOnClickListener {
-            lifecycleScope.launch {
+            lifecycleScope.launch { //lifecycleScope will stick this coroutine to the lifecycle of our activity not until our app is closed
                 while (true) {
                     delay(1000L)
                     Log.d(TAG,"Still Running....")

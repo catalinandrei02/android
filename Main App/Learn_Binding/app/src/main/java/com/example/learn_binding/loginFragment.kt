@@ -2,23 +2,29 @@ package com.example.learn_binding
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.learn_binding.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlin.system.measureTimeMillis
 
 @SuppressLint("CheckResult")
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private lateinit var auth: FirebaseAuth
+    private val TAG = "LoginFragment"
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -72,8 +78,12 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             val email = binding.email.text.toString().trim()
             val password = binding.acPassword.text.toString().trim()
-            loginUser(email, password)
-
+            lifecycleScope.launch(Dispatchers.IO) {
+                val time = measureTimeMillis {
+                    loginUser(email, password)
+                }
+                Log.d(TAG,"Running time: $time ms.")
+            }
         }
         binding.noAccount.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
@@ -84,6 +94,7 @@ class LoginFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+
         super.onDestroyView()
         _binding = null
     }
