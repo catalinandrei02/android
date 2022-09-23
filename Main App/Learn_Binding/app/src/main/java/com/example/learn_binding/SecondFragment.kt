@@ -6,14 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.learn_binding.databinding.FragmentSecondBinding
 
 
 class SecondFragment : Fragment() {
     //viewModel created
-    private val viewModel: ResurseViewModel by viewModels()
+    private val viewModel: ResurseViewModel by activityViewModels() //shared viewModel
     private var _binding: FragmentSecondBinding? = null
     private val binding get() = _binding!!
 
@@ -23,6 +23,8 @@ class SecondFragment : Fragment() {
     ): View {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        //gets resources
+        viewModel.getResources()
         return binding.root
 
     }
@@ -45,6 +47,7 @@ class SecondFragment : Fragment() {
             viewModel.makeOnlineCoffe(350.0, 75.0, 20.0, 13.8)
         }
         binding.cappuccino.setOnClickListener {
+
             viewModel.makeOnlineCoffe(200.0, 100.0, 10.0, 16.5)
         }
     }

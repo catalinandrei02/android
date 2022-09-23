@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.myapplication"
-        minSdk 21
+        minSdk 28
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -51,9 +51,10 @@ dependencies {
     //fragment navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
-    //livedata && viewModel
+    //lifeCycle Library
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha02"
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha02"
     //implementation for login/register (but why?)
     implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
@@ -66,14 +67,11 @@ dependencies {
         implementation platform('com.google.firebase:firebase-bom:30.4.1')
         // Add the dependency for the Realtime Database library
         // When using the BoM, you don't specify versions in Firebase library dependencies
-        implementation 'com.google.firebase:firebase-database-ktx'
-        implementation 'com.google.firebase:firebase-firestore-ktx:24.3.1'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.6'
     //Corotuines Library
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-    //lifeCicleScope - viewModelScope Library
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha02"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha02"
+
     //
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

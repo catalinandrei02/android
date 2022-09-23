@@ -16,7 +16,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import kotlin.system.measureTimeMillis
 
 @SuppressLint("CheckResult")
@@ -78,12 +80,7 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             val email = binding.email.text.toString().trim()
             val password = binding.acPassword.text.toString().trim()
-            lifecycleScope.launch(Dispatchers.IO) {
-                val time = measureTimeMillis {
-                    loginUser(email, password)
-                }
-                Log.d(TAG,"Running time: $time ms.")
-            }
+            loginUser(email, password)
         }
         binding.noAccount.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
@@ -104,15 +101,23 @@ class LoginFragment : Fragment() {
         else if (text == "Password")
             binding.acPassword.error = if (isNotValid) "$text can't be empty!" else null
     }
-    private fun loginUser(email: String, password: String){
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { login ->
-                if (login.isSuccessful) {
-                    findNavController().navigate(R.id.action_loginFragment_to_FirstFragment)
-                    Toast.makeText(context,"Login Successfull!",Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(context,login.exception?.message,Toast.LENGTH_SHORT).show()
+    private fun loginUser(email: String, password: String) = lifecycleScope.launch(Dispatchers.IO) {
+            withTimeout(500L) {
+                if (isActive) {
+                    val time = measureTimeMillis {
+                    auth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener { login ->
+                            if (login.isSuccessful) {
+                                findNavController().navigate(R.id.action_loginFragment_to_FirstFragment)
+                                Toast.makeText(context, "Login Successfull!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(context, login.exception?.message, Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                    Log.d(TAG,"Time to run code: $time ms.")
                 }
             }
+
     }
 }
