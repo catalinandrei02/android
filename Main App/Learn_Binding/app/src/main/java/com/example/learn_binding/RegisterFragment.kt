@@ -16,7 +16,7 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 
 
-@SuppressLint("CheckResult") //what is this?
+@SuppressLint("CheckResult") //I have to get rid of this but I completely forgot about it
 class RegisterFragment : Fragment() {
 
     // binding

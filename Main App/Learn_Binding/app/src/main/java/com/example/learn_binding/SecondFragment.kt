@@ -23,15 +23,14 @@ class SecondFragment : Fragment() {
     ): View {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
-        //gets resources
-        viewModel.getResources()
+        viewModel.getResources()//apelam iar resursele
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //legatura viewModel kt si xml
+        //legatura viewModel kt si xml unde facem data binding cu mutableLiveData din viewModel
         _binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             this.vm = viewModel

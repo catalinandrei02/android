@@ -23,20 +23,18 @@ class ThirdFragment : Fragment() {
     ): View {
 
         _binding = FragmentThirdBinding.inflate(inflater, container, false)
-        viewModel.getResources()
+        viewModel.getResources()// apelam inca o data resursele
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding?.apply {
-            lifecycleOwner = viewLifecycleOwner
-            this.vm = viewModel
-        }
         binding.exit.setOnClickListener {
             findNavController().navigate(R.id.action_thirdFragment_to_FirstFragment)
         }
+        //afisam valorile din database, aici puteam face mai ok cu ReciclerView dar
+        //am gandit asa inainte sa descopar ReciclerView, de luni optimizez
         binding.water.text = getString(R.string.check_w,viewModel.db.onlWater.toInt())
         binding.milk.text = getString(R.string.check_m,viewModel.db.onlMilk.toInt())
         binding.beans.text = getString(R.string.check_b,viewModel.db.onlBeans.toInt())

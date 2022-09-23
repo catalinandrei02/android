@@ -21,15 +21,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
 import kotlin.system.measureTimeMillis
 
-@SuppressLint("CheckResult")
+@SuppressLint("CheckResult")// de asta am uitat sa ma ocup, cum am fost prins cu bugurile cu baza de date si log-in/register
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private lateinit var auth: FirebaseAuth
     private val TAG = "LoginFragment"
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -41,6 +39,7 @@ class LoginFragment : Fragment() {
         //Auth
         auth = FirebaseAuth.getInstance()
         //Username Validation - need explanations
+        //I guess RxTextView converts our text view to an observalbe
         val usernameStream = RxTextView.textChanges(binding.email)
             .skipInitialValue()
             .map { username -> username.isEmpty()
@@ -49,6 +48,7 @@ class LoginFragment : Fragment() {
             showTextMinimalAlert(it,"Email/Username")
         }
         //Password Validation - need explanations
+        //I guess RxTextView converts our text view to an observalbe
         val passwordStream = RxTextView.textChanges(binding.acPassword)
             .skipInitialValue()
             .map { password -> password.isEmpty()
@@ -101,6 +101,16 @@ class LoginFragment : Fragment() {
         else if (text == "Password")
             binding.acPassword.error = if (isNotValid) "$text can't be empty!" else null
     }
+
+    /* Am creeat functia de login care ruleaza codul in thread-ul IO, atat timp cat frgamentul este alive
+     * si are un timeout maxm de 500 ms dupa care ar trebuii sa il omoare daca ceva nu merge
+     * daca log-in ul este realizat cu succes va merge catre firstFragment
+     * */
+
+    /* Cand rulez programul pe emulator si vreau sa accesez orice are legatura cu Firebase asta e warningul:
+    * Ignoring header X-Firebase-Locale because its value was null.
+    * fara nici o eraore, si de pe telefon merge perfect
+    * */
     private fun loginUser(email: String, password: String) = lifecycleScope.launch(Dispatchers.IO) {
             withTimeout(500L) {
                 if (isActive) {
@@ -118,6 +128,5 @@ class LoginFragment : Fragment() {
                     Log.d(TAG,"Time to run code: $time ms.")
                 }
             }
-
     }
 }
