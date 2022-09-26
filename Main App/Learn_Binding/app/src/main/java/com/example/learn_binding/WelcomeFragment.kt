@@ -42,7 +42,7 @@ class WelcomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         if (auth.currentUser != null) {
-            findNavController().navigate(R.id.action_welcomeFragment_to_FirstFragment)
+            findNavController().navigate(R.id.after_welcome_login)
         }
     }
     override fun onDestroyView() {

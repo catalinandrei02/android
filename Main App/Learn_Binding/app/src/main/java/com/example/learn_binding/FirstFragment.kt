@@ -62,7 +62,7 @@ class FirstFragment : Fragment() {
             //it's using frebase's library to sing you out
             auth.signOut()
             //takes you to the welcome screen (login,register)
-            findNavController().navigate(R.id.action_FirstFragment_to_welcomeFragment)
+            findNavController().navigate(R.id.after_logout)
             Toast.makeText(context, "Logging you out!", Toast.LENGTH_LONG).show()
         }
     }
