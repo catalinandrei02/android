@@ -10,12 +10,9 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@color/light_goldenrod_yellow</item>
         <!-- Customize your theme here. -->
-        <item name="android:windowBackground">@color/light_goldenrod_yellow</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:windowLightNavigationBar">true</item>
+
     </style>
     <style name="ButtonWhite">
         <item name="android:background">@drawable/bg_button</item>

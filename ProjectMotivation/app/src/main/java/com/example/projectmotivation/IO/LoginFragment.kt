@@ -39,7 +39,6 @@ class LoginFragment : Fragment() {
     ): View {
         binding = FragmentLoginBinding.inflate(inflater,container,false)
         auth = Firebase.auth
-
         checkStream()
 
         return binding.root

@@ -34,4 +34,6 @@ class ResetFragment : Fragment() {
         frameAnimation.setExitFadeDuration(5000)
         frameAnimation.start()
     }
+
+
 }
