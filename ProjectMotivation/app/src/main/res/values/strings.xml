@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">ProjectMotivation</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="btn_login">Login</string>
+    <string name="btn_register">Register</string>
+    <!-- Image Views -->
+    <string name="iv_splashlogo">SplashLogo</string>
+    <string name="iv_p3">company</string>
+    <!-- Text Views -->
+    <string name="tv_motto">Bussines as Unusual</string>
+    <string name="tv_communication">Communication</string>
+    <string name="tv_multitasking">Multitasking</string>
+    <string name="tv_growth">Growth</string>
+    <string name="tv_next">Next</string>
+    <string name="tv_login_register">I don\'t have an account <font color="#6A8D73"><b>Register</b></font></string>
+    <string name="tv_login_reset">Forgot Password?</string>
+    <string name="tv_login_title">Welcome to Motivation, please log in.</string>
+    <string name="tv_login_subtitle"><font color="#6A8D73"><b>Login</b></font> if you already have an account.</string>
+    <string name="tv_login_email">Your email</string>
+    <string name="tv_login_password">Your password</string>
+    <string name="tv_welcome_title">Motivation</string>
+    <string name="tv_welcome_subtitle">Motivation is the process that initiates, guides, and maintains goal-oriented behaviors. Join us now!\n\n
+        <b>Login</b> if you already have an account.\n
+        <b>Register</b> to get started with the app.
+    </string>
+</resources>

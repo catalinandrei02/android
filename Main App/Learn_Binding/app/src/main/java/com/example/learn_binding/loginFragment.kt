@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
 import kotlin.system.measureTimeMillis
 
-@SuppressLint("CheckResult")// de asta am uitat sa ma ocup, cum am fost prins cu bugurile cu baza de date si log-in/register
+
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
