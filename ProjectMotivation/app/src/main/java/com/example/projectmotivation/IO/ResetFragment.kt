@@ -2,6 +2,7 @@ package com.example.projectmotivation.io
 
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -88,6 +89,7 @@ class ResetFragment : Fragment() {
                 }
                 }
             }
+            Log.d(TAG,"Time to run code: $time ms.")
         }
     }
 

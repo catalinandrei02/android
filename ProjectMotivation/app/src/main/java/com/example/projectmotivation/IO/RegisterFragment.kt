@@ -15,8 +15,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.projectmotivation.R
 import com.example.projectmotivation.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.jakewharton.rxbinding4.widget.textChanges
 import io.reactivex.rxjava3.core.Observable
@@ -32,9 +34,10 @@ class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var dbRef: DatabaseReference
     private val compositeDisposable =  CompositeDisposable()
     private val TAG = "RegisterFragment"
-    private val TAG_2 = "Cloud DataBase"
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -106,29 +109,23 @@ class RegisterFragment : Fragment() {
                     auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener {
                             if (it.isSuccessful) {
-                                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-                                Toast.makeText(
-                                    context,
-                                    "You are now registered!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                val user: FirebaseUser? = auth.currentUser
+                                val userId:String = user!!.uid
+                                dbRef = Firebase.database.reference.child("users").child(userId)
+                                val hashMap: HashMap<String,String> = HashMap()
+                                hashMap["userId"] = userId
+                                hashMap["userName"] = username
+                                hashMap["name"] = name
+                                hashMap["profileImage"] = ""
+                                dbRef.setValue(hashMap).addOnCompleteListener {
+                                        findNavController().navigate(R.id.action_registerFragment_to_mainFragment)
+                                        Toast.makeText(context, "You are now registered!", Toast.LENGTH_SHORT).show()
+                                    }
                             } else {
-                                Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT)
-                                    .show()
+                                        Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT).show()
                             }
                         }
-                    val dataBaseRef = Firebase.firestore
-                    val user: MutableMap<String,Any> = HashMap()
-                    user["name"] = name
-                    user["username"] = username
-                    dataBaseRef.collection("users")
-                        .add(user)
-                        .addOnSuccessListener {
-                            Log.w(TAG_2,"Added to database!")
-                        }
-                        .addOnFailureListener {
-                            Log.w(TAG_2,"Failed to add to database!")
-                        }
+
                 }
                 Log.d(TAG,"Time to run register: $time ms.")
             }

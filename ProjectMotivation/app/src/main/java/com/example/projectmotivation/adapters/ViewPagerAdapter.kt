@@ -1,4 +1,4 @@
-package com.example.projectmotivation.onboarding
+package com.example.projectmotivation.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

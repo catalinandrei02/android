@@ -39,7 +39,6 @@ class WelcomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        super.onStart()
         if (auth.currentUser != null) {
             findNavController().navigate(R.id.action_welcomeFragment_to_mainFragment)
         }

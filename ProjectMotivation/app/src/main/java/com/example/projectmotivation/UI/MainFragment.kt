@@ -1,13 +1,12 @@
 package com.example.projectmotivation.ui
 
 import android.os.Bundle
-import android.text.TextUtils.replace
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.replace
 import com.example.projectmotivation.R
+import com.example.projectmotivation.content.ChatFragment
 import com.example.projectmotivation.content.HomeFragment
 import com.example.projectmotivation.content.ProfileFragment
 import com.example.projectmotivation.content.SettingsFragment
@@ -34,6 +33,7 @@ class MainFragment : Fragment() {
             when (it.itemId){
                 R.id.navBar_home -> replaceFragment(HomeFragment())
                 R.id.navBar_profile -> replaceFragment(ProfileFragment())
+                R.id.navBar_chat -> replaceFragment(ChatFragment())
                 R.id.navBar_settings -> replaceFragment(SettingsFragment())
                 else -> {}
             }

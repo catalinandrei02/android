@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.projectmotivation.R
-import kotlinx.coroutines.delay
 
 class SplashFragment : Fragment() {
 
