@@ -100,14 +100,13 @@
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
-            android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/slide_left"
-            app:exitAnim="@anim/wait_anim"
-            app:popEnterAnim="@anim/wait_anim"
-            app:popExitAnim="@anim/slide_right"
+            android:id="@+id/action_registerFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
             app:popUpTo="@id/registerFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/resetFragment"
@@ -124,6 +123,12 @@
         android:id="@+id/mainFragment"
         android:name="com.example.projectmotivation.ui.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

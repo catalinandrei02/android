@@ -10,6 +10,10 @@
         android:icon="@drawable/ic_baseline_person_24"
         android:title="@string/bottom_nav_profile" />
     <item
+        android:id="@+id/navBar_chat"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:title="@string/bottom_nav_chat" />
+    <item
         android:id="@+id/navBar_settings"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="@string/bottom_nav_settings" />
