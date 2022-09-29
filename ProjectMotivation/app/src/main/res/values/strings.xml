@@ -4,6 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="btn_login">Login</string>
     <string name="btn_register">Register</string>
+    <string name="btn_reset">Reset Password</string>
     <!-- Image Views -->
     <string name="iv_splashlogo">SplashLogo</string>
     <string name="iv_p3">company</string>
@@ -21,6 +22,7 @@
     <string name="tv_multitasking">Multitasking</string>
     <string name="tv_growth">Growth</string>
     <string name="tv_next">Next</string>
+    <string name="tv_reset_subtitle"><font color="#6A8D73"><b>Reset Password</b></font> if you forgot yours.</string>
     <string name="tv_register_title">Create an account.</string>
     <string name="tv_register_subtitle"><font color="#6A8D73"><b>Register</b></font> to get started with the app.</string>
     <string name="tv_register_backToLogin">I already have an account <font color="#6A8D73"><b>Login</b></font></string>
@@ -32,4 +34,10 @@
         <b>Login</b> if you already have an account.\n
         <b>Register</b> to get started with the app.
     </string>
+    <!-- Bottom Nav Bar -->
+    <string name="bottom_nav_home">Home</string>
+    <string name="bottom_nav_profile">Profile</string>
+    <string name="bottom_nav_settings">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

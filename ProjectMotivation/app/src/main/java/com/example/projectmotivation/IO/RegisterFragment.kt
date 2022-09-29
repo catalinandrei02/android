@@ -16,6 +16,7 @@ import com.example.projectmotivation.R
 import com.example.projectmotivation.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.jakewharton.rxbinding4.widget.textChanges
 import io.reactivex.rxjava3.core.Observable
@@ -33,6 +34,7 @@ class RegisterFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private val compositeDisposable =  CompositeDisposable()
     private val TAG = "RegisterFragment"
+    private val TAG_2 = "Cloud DataBase"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +53,9 @@ class RegisterFragment : Fragment() {
         binding.btnRegister.setOnClickListener{
             val email = binding.etEmail.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
-            registerUser(email, password)
+            val name = binding.etName.text.toString().trim()
+            val username = binding.etUsername.text.toString().trim()
+            registerUser(email, password, name, username)
         }
         binding.tvRegisterBackToLogin.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
@@ -95,7 +99,7 @@ class RegisterFragment : Fragment() {
         binding.etPasswordCheck.error = if (isNotValid) "Password doesn't match!" else null
     }
 
-    private fun registerUser(email: String, password: String) = lifecycleScope.launch(Dispatchers.IO) {
+    private fun registerUser(email: String, password: String, name:String, username:String) = lifecycleScope.launch(Dispatchers.IO) {
         withTimeout(500L) {
             if (isActive) {
                 val time = measureTimeMillis {
@@ -112,6 +116,18 @@ class RegisterFragment : Fragment() {
                                 Toast.makeText(context, it.exception?.message, Toast.LENGTH_SHORT)
                                     .show()
                             }
+                        }
+                    val dataBaseRef = Firebase.firestore
+                    val user: MutableMap<String,Any> = HashMap()
+                    user["name"] = name
+                    user["username"] = username
+                    dataBaseRef.collection("users")
+                        .add(user)
+                        .addOnSuccessListener {
+                            Log.w(TAG_2,"Added to database!")
+                        }
+                        .addOnFailureListener {
+                            Log.w(TAG_2,"Failed to add to database!")
                         }
                 }
                 Log.d(TAG,"Time to run register: $time ms.")
@@ -183,11 +199,11 @@ class RegisterFragment : Fragment() {
             if (isValid) {
                 binding.btnRegister.isEnabled = true
                 binding.btnRegister.backgroundTintList =
-                    context?.let { ContextCompat.getColorStateList(it, R.color.primary_color) }
+                    context?.let { ContextCompat.getColorStateList(it, R.color.light_goldenrod_yellow) }
             } else {
                 binding.btnRegister.isEnabled = false
                 binding.btnRegister.backgroundTintList =
-                    context?.let { ContextCompat.getColorStateList(it, android.R.color.darker_gray) }
+                    context?.let { ContextCompat.getColorStateList(it, R.color.bone) }
             }
         }
             .addTo(compositeDisposable)
