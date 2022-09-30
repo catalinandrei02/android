@@ -116,7 +116,7 @@ class RegisterFragment : Fragment() {
                                 hashMap["userId"] = userId
                                 hashMap["userName"] = username
                                 hashMap["name"] = name
-                                hashMap["profileImage"] = ""
+                                hashMap["userImage"] = ""
                                 dbRef.setValue(hashMap).addOnCompleteListener {
                                         findNavController().navigate(R.id.action_registerFragment_to_mainFragment)
                                         Toast.makeText(context, "You are now registered!", Toast.LENGTH_SHORT).show()

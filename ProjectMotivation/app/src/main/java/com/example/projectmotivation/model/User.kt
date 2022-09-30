@@ -1,3 +1,6 @@
 package com.example.projectmotivation.model
 
-data class User (val userId: String = "", val userName: String = "", val userImage: String = "")
+import com.google.firebase.database.IgnoreExtraProperties
+
+@IgnoreExtraProperties
+class User (val userId: String? = null, val userName: String? = null, val userImage: String? = null)

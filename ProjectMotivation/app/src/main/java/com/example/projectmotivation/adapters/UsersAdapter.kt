@@ -7,11 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.annotation.GlideModule
 import com.example.projectmotivation.R
 import com.example.projectmotivation.content.ChatFragment
 import com.example.projectmotivation.model.User
 
-
+@GlideModule
 class UsersAdapter(private val context: ChatFragment, private val userList: ArrayList<User>):
     RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
 
@@ -23,7 +24,6 @@ class UsersAdapter(private val context: ChatFragment, private val userList: Arra
        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user,parent,false)
         return ViewHolder(view)
     }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user = userList[position]
         holder.textUserName.text = user.userName
