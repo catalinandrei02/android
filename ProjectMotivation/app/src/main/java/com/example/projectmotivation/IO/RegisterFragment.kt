@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.projectmotivation.R
 import com.example.projectmotivation.databinding.FragmentRegisterBinding
+import com.example.projectmotivation.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -45,7 +46,6 @@ class RegisterFragment : Fragment() {
     ): View {
         binding = FragmentRegisterBinding.inflate(inflater,container,false)
         auth = Firebase.auth
-        checkStream()
 
         return binding.root
     }
@@ -53,15 +53,18 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnRegister.setOnClickListener{
-            val email = binding.etEmail.text.toString().trim()
-            val password = binding.etPassword.text.toString().trim()
-            val name = binding.etName.text.toString().trim()
-            val username = binding.etUsername.text.toString().trim()
-            registerUser(email, password, name, username)
-        }
-        binding.tvRegisterBackToLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        checkStream()
+        binding.apply {
+            btnRegister.setOnClickListener{
+                val email = etEmail.text.toString().trim()
+                val password = etPassword.text.toString().trim()
+                val name = etName.text.toString().trim()
+                val username = etUsername.text.toString().trim()
+                registerUser(email, password, name, username)
+            }
+            tvRegisterBackToLogin.setOnClickListener {
+                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+            }
         }
 
     }
@@ -78,28 +81,30 @@ class RegisterFragment : Fragment() {
 
     private fun background(){
         val frameAnimation: AnimationDrawable = binding.animation.background as AnimationDrawable
-        frameAnimation.setEnterFadeDuration(2500)
-        frameAnimation.setExitFadeDuration(5000)
-        frameAnimation.start()
+        frameAnimation.apply {
+            setEnterFadeDuration(2500)
+            setExitFadeDuration(5000)
+            start()
+        }
     }
 
     private fun showNameExistAlert(isNotValid: Boolean){
-        binding.etName.error = if (isNotValid) "Name can't be empty!" else null
+        binding.etName.error = if (isNotValid) Constants.Error.NAME else null
     }
 
     private fun showTextMinimalAlert(isNotValid: Boolean, text: String) {
         if (text == "Username")
-            binding.etUsername.error = if (isNotValid) "$text must contain at least 6 characters!" else null
+            binding.etUsername.error = if (isNotValid) "$text " + Constants.Error.CHAR_6 else null
         else if (text == "Password")
-            binding.etPassword.error = if (isNotValid) "$text must contain at least 8 characters!" else null
+            binding.etPassword.error = if (isNotValid) "$text " + Constants.Error.CHAR_8 else null
     }
 
     private fun showEmailValidAlert(isNotValid: Boolean){
-        binding.etEmail.error = if (isNotValid) "The e-mail you entered is not valid!" else null
+        binding.etEmail.error = if (isNotValid) Constants.Error.EMAIL else null
     }
 
     private fun showPasswordConfirmAlert(isNotValid: Boolean){
-        binding.etPasswordCheck.error = if (isNotValid) "Password doesn't match!" else null
+        binding.etPasswordCheck.error = if (isNotValid) Constants.Error.PASSWORD_CONFIRM else null
     }
 
     private fun registerUser(email: String, password: String, name:String, username:String) = lifecycleScope.launch(Dispatchers.IO) {
@@ -111,7 +116,7 @@ class RegisterFragment : Fragment() {
                             if (it.isSuccessful) {
                                 val user: FirebaseUser? = auth.currentUser
                                 val userId:String = user!!.uid
-                                dbRef = Firebase.database.reference.child("users").child(userId)
+                                dbRef = Firebase.database.reference.child(Constants.Url.USER).child(userId)
                                 val hashMap: HashMap<String,String> = HashMap()
                                 hashMap["userId"] = userId
                                 hashMap["userName"] = username
@@ -140,8 +145,7 @@ class RegisterFragment : Fragment() {
             }
         nameStream.subscribe {
             showNameExistAlert(it)
-        }
-            .addTo(compositeDisposable)
+        }.addTo(compositeDisposable)
 
         val emailStream = binding.etEmail.textChanges()
             .skipInitialValue()
@@ -149,8 +153,7 @@ class RegisterFragment : Fragment() {
             }
         emailStream.subscribe {
             showEmailValidAlert(it)
-        }
-            .addTo(compositeDisposable)
+        }.addTo(compositeDisposable)
 
         val usernameStream = binding.etUsername.textChanges()
             .skipInitialValue()
@@ -158,8 +161,7 @@ class RegisterFragment : Fragment() {
             }
         usernameStream.subscribe {
             showTextMinimalAlert(it,"Username")
-        }
-            .addTo(compositeDisposable)
+        }.addTo(compositeDisposable)
 
         val passwordStream = binding.etPassword.textChanges()
             .skipInitialValue()
@@ -167,8 +169,7 @@ class RegisterFragment : Fragment() {
             }
         passwordStream.subscribe {
             showTextMinimalAlert(it,"Password")
-        }
-            .addTo(compositeDisposable)
+        }.addTo(compositeDisposable)
 
         val passwordConfirmStream = Observable.merge(
            binding.etPassword.textChanges()
@@ -181,8 +182,7 @@ class RegisterFragment : Fragment() {
                 })
         passwordConfirmStream.subscribe {
             showPasswordConfirmAlert(it)
-        }
-            .addTo(compositeDisposable)
+        }.addTo(compositeDisposable)
 
         val invalidFieldStream = Observable.combineLatest(
             nameStream,
@@ -194,15 +194,18 @@ class RegisterFragment : Fragment() {
             !nameInvalid && !emailInvalid && !usernameInvalid && !passwordInvalid && !passwordConfirmInvalid }
         invalidFieldStream.subscribe { isValid ->
             if (isValid) {
-                binding.btnRegister.isEnabled = true
-                binding.btnRegister.backgroundTintList =
-                    context?.let { ContextCompat.getColorStateList(it, R.color.light_goldenrod_yellow) }
+                binding.apply {
+                    btnRegister.isEnabled = true
+                    btnRegister.backgroundTintList =
+                        context?.let { ContextCompat.getColorStateList(it, R.color.light_goldenrod_yellow) }
+                }
             } else {
-                binding.btnRegister.isEnabled = false
-                binding.btnRegister.backgroundTintList =
-                    context?.let { ContextCompat.getColorStateList(it, R.color.bone) }
+                binding.apply {
+                    btnRegister.isEnabled = false
+                    btnRegister.backgroundTintList =
+                        context?.let { ContextCompat.getColorStateList(it, R.color.bone) }
+                }
             }
-        }
-            .addTo(compositeDisposable)
+        }.addTo(compositeDisposable)
     }
 }

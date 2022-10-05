@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.projectmotivation.R
 import com.example.projectmotivation.databinding.FragmentResetBinding
+import com.example.projectmotivation.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -38,12 +39,13 @@ class ResetFragment : Fragment() {
     ): View {
         binding = FragmentResetBinding.inflate(inflater,container,false)
         auth = Firebase.auth
-        checkStream()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        checkStream()
         binding.btnReset.setOnClickListener{
             val email = binding.etEmail.text.toString().trim()
             resetPassword(email)
@@ -57,24 +59,29 @@ class ResetFragment : Fragment() {
 
     private fun background(){
         val frameAnimation: AnimationDrawable = binding.animation.background as AnimationDrawable
-        frameAnimation.setEnterFadeDuration(2500)
-        frameAnimation.setExitFadeDuration(5000)
-        frameAnimation.start()
+        frameAnimation.apply {
+            setEnterFadeDuration(2500)
+            setExitFadeDuration(5000)
+            start()
+        }
     }
 
     private fun showEmailValidAlert(isNotValid: Boolean){
         if (isNotValid){
-            binding.etEmail.error = "The e-mail you entered is not valid!"
-            binding.btnReset.isEnabled = false
-            binding.btnReset.backgroundTintList =
-                context?.let { ContextCompat.getColorStateList(it, R.color.light_goldenrod_yellow) }
+            binding.apply {
+                etEmail.error = Constants.Error.EMAIL
+                btnReset.isEnabled = false
+                btnReset.backgroundTintList =
+                    context?.let { ContextCompat.getColorStateList(it, R.color.light_goldenrod_yellow) }
+            }
         } else {
-            binding.etEmail.error = null
-            binding.btnReset.isEnabled = true
-            binding.btnReset.backgroundTintList =
-                context?.let { ContextCompat.getColorStateList(it,  R.color.bone) }
+            binding.apply {
+                etEmail.error = null
+                btnReset.isEnabled = true
+                btnReset.backgroundTintList =
+                    context?.let { ContextCompat.getColorStateList(it,  R.color.bone) }
+            }
         }
-
     }
 
     private fun resetPassword(email: String) = lifecycleScope.launch(Dispatchers.IO){
@@ -86,7 +93,7 @@ class ResetFragment : Fragment() {
                     Toast.makeText(context,"Password reset email sent!", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(context,reset.exception?.message, Toast.LENGTH_SHORT).show()
-                }
+                    }
                 }
             }
             Log.d(TAG,"Time to run code: $time ms.")
@@ -100,9 +107,6 @@ class ResetFragment : Fragment() {
             }
         emailStream.subscribe {
             showEmailValidAlert(it)
-        }
-            .addTo(compositeDisposable)
-
+        }.addTo(compositeDisposable)
     }
-
 }

@@ -23,7 +23,6 @@ class WelcomeFragment : Fragment() {
     ): View {
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
         auth = Firebase.auth
-
         return binding.root
     }
 

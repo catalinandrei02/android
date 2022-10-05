@@ -5,15 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.projectmotivation.R
+import com.example.projectmotivation.databinding.FragmentSecondScreenBinding
 
 class SecondScreen : Fragment() {
+
+    private lateinit var binding: FragmentSecondScreenBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        return inflater.inflate(R.layout.fragment_second_screen, container, false)
+        binding = FragmentSecondScreenBinding.inflate(inflater,container,false)
+        return binding.root
     }
 }

@@ -10,14 +10,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.projectmotivation.R
+import com.example.projectmotivation.databinding.FragmentSplashBinding
 
 class SplashFragment : Fragment() {
 
+    private lateinit var binding: FragmentSplashBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        binding = FragmentSplashBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         Handler(Looper.getMainLooper()).postDelayed({
             if (onBoardingFinished()){
                 findNavController().navigate(R.id.action_splashFragment_to_welcomeFragment)
@@ -26,12 +34,9 @@ class SplashFragment : Fragment() {
             }
 
         }, 3000)
-        return inflater.inflate(R.layout.fragment_splash, container, false)
     }
     private fun onBoardingFinished(): Boolean {
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         return sharedPref.getBoolean("Finished",false)
-
     }
-
 }

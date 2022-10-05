@@ -6,10 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.projectmotivation.R
-import com.example.projectmotivation.content.ChatFragment
-import com.example.projectmotivation.content.HomeFragment
-import com.example.projectmotivation.content.ProfileFragment
-import com.example.projectmotivation.content.SettingsFragment
+import com.example.projectmotivation.content.*
 import com.example.projectmotivation.databinding.FragmentMainBinding
 
 

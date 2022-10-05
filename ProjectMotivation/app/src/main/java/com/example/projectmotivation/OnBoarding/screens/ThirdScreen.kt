@@ -17,11 +17,15 @@ class ThirdScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentThirdScreenBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.tvNext.setOnClickListener{
             findNavController().navigate(R.id.action_viewPagerFragment_to_welcomeFragment)
             onBoardingFinished()
         }
-        return binding.root
     }
     private fun onBoardingFinished() {
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)

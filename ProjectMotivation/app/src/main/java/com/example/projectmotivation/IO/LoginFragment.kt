@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.projectmotivation.R
 import com.example.projectmotivation.databinding.FragmentLoginBinding
+import com.example.projectmotivation.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -39,7 +40,6 @@ class LoginFragment : Fragment() {
     ): View {
         binding = FragmentLoginBinding.inflate(inflater,container,false)
         auth = Firebase.auth
-        checkStream()
 
         return binding.root
     }
@@ -47,20 +47,22 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnLogin.setOnClickListener {
-            val email = binding.etEmail.text.toString().trim()
-            val password = binding.etPassword.text.toString().trim()
-            loginUser(email, password)
-        }
+        checkStream()
+        binding.apply {
+            btnLogin.setOnClickListener {
+                val email = etEmail.text.toString().trim()
+                val password = etPassword.text.toString().trim()
+                loginUser(email, password)
+            }
 
-        binding.tvLoginRegister.setOnClickListener {
-        findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-        }
+            tvLoginRegister.setOnClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+            }
 
-        binding.tvLoginReset.setOnClickListener {
-        findNavController().navigate(R.id.action_loginFragment_to_resetFragment)
+            tvLoginReset.setOnClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_resetFragment)
+            }
         }
-
     }
 
     override fun onStart() {
@@ -75,9 +77,9 @@ class LoginFragment : Fragment() {
 
     private fun showTextMinimalAlert(isNotValid: Boolean, text: String) {
         if (text == "Email/Username")
-            binding.etEmail.error = if (isNotValid) "$text can't be empty!" else null
+            binding.etEmail.error = if (isNotValid) "$text " + Constants.Error.EMPTY else null
         else if (text == "Password")
-            binding.etPassword.error = if (isNotValid) "$text can't be empty!" else null
+            binding.etPassword.error = if (isNotValid) "$text " + Constants.Error.EMPTY else null
     }
 
     private fun loginUser(email: String, password: String) = lifecycleScope.launch(Dispatchers.IO) {
@@ -88,7 +90,7 @@ class LoginFragment : Fragment() {
                         .addOnCompleteListener { login ->
                             if (login.isSuccessful) {
                                 findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
-                                Toast.makeText(context, "Login Successfull!", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "Login Successfully!", Toast.LENGTH_SHORT).show()
                             } else {
                                 Toast.makeText(context, login.exception?.message, Toast.LENGTH_SHORT).show()
                             }
@@ -101,9 +103,11 @@ class LoginFragment : Fragment() {
 
     private fun background(){
         val frameAnimation: AnimationDrawable = binding.animation.background as AnimationDrawable
-        frameAnimation.setEnterFadeDuration(2500)
-        frameAnimation.setExitFadeDuration(5000)
-        frameAnimation.start()
+        frameAnimation.apply {
+            setEnterFadeDuration(2500)
+            setExitFadeDuration(5000)
+            start()
+        }
     }
 
     private fun checkStream() {
@@ -113,8 +117,7 @@ class LoginFragment : Fragment() {
             }
         usernameStream.subscribe {
             showTextMinimalAlert(it,"Email/Username")
-        }
-            .addTo(compositeDisposable)
+        }.addTo(compositeDisposable)
 
         val passwordStream = binding.etPassword.textChanges()
             .skipInitialValue()
@@ -122,8 +125,7 @@ class LoginFragment : Fragment() {
             }
         usernameStream.subscribe {
             showTextMinimalAlert(it,"Password")
-        }
-            .addTo(compositeDisposable)
+        }.addTo(compositeDisposable)
 
         val invalidFieldStream = Observable.combineLatest(
             usernameStream,
@@ -131,16 +133,18 @@ class LoginFragment : Fragment() {
         ) { usernameInvalid: Boolean, passwordInvalid: Boolean -> !usernameInvalid && !passwordInvalid }
         invalidFieldStream.subscribe { isValid ->
             if (isValid) {
-                binding.btnLogin.isEnabled = true
-                binding.btnLogin.backgroundTintList =
-                    context?.let { ContextCompat.getColorStateList(it, R.color.light_goldenrod_yellow) }
+                binding.apply {
+                    btnLogin.isEnabled = true
+                    btnLogin.backgroundTintList =
+                        context?.let { ContextCompat.getColorStateList(it, R.color.light_goldenrod_yellow) }
+                }
             } else {
-                binding.btnLogin.isEnabled = false
-                binding.btnLogin.backgroundTintList =
-                    context?.let { ContextCompat.getColorStateList(it, R.color.bone) }
+                binding.apply {
+                    btnLogin.isEnabled = false
+                    btnLogin.backgroundTintList =
+                        context?.let { ContextCompat.getColorStateList(it, R.color.bone) }
+                }
             }
-        }
-            .addTo(compositeDisposable)
-
+        }.addTo(compositeDisposable)
     }
 }

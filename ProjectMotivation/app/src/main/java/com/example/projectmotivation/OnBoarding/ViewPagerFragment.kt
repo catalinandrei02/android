@@ -18,6 +18,11 @@ class ViewPagerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentViewPagerBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val fragmentList = arrayListOf(
             FirstScreen(),
@@ -29,11 +34,9 @@ class ViewPagerFragment : Fragment() {
             requireActivity().supportFragmentManager,
             lifecycle
         )
-
-        binding.viewpager.adapter = adapter
-        binding.dotsIndicator.attachTo(binding.viewpager)
-
-        return binding.root
+        binding.apply {
+            viewpager.adapter = adapter
+            dotsIndicator.attachTo(binding.viewpager)
+        }
     }
-
 }

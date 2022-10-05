@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.ProjectMotivation" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -12,7 +12,6 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/light_goldenrod_yellow</item>
         <!-- Customize your theme here. -->
-
     </style>
     <style name="ButtonWhite">
         <item name="android:background">@drawable/bg_button</item>
@@ -70,7 +69,6 @@
         <item name="android:textColor">@color/primary_color</item>
         <item name="android:textSize">30sp</item>
     </style>
-
     <style name="TextInputLayout" parent="ThemeOverlay.Material3.AutoCompleteTextView.FilledBox">
         <item name="android:textColorHint">@color/primary_color</item>
         <item name="hintTextColor">@color/primary_color</item>
