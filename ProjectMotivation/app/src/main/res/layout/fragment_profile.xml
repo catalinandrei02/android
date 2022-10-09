@@ -8,31 +8,19 @@
     android:padding="20dp"
     tools:context=".content.ProfileFragment">
 
-    <!--    <com.google.android.material.card.MaterialCardView-->
-    <!--        android:id="@+id/materialCardView"-->
-    <!--        android:layout_width="170dp"-->
-    <!--        android:layout_height="170dp"-->
-    <!--        android:layout_marginTop="50dp"-->
-    <!--        app:cardCornerRadius="90dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.5"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent">-->
-
-    <ImageView
+    <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/iv_userImage"
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:layout_marginTop="50dp"
         android:scaleType="centerCrop"
         android:src="@drawable/blank_profile"
+        app:roundPercent="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription,ImageContrastCheck" />
-
-    <!--    </com.google.android.material.card.MaterialCardView>-->
 
     <TextView
         android:id="@+id/tv_item_username"

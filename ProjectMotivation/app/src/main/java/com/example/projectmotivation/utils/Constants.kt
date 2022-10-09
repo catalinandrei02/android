@@ -5,6 +5,8 @@ object Constants {
     object Url {
         const val IMAGE = "image/"
         const val USER = "users"
+        const val USER_CHAT = "/users"
+        const val CHAT = "Chat"
     }
     object Error {
         const val EMAIL = "The e-mail you entered is not valid!"
@@ -16,5 +18,14 @@ object Constants {
     }
     object Text {
         const val UPLOAD = "Uploading"
+    }
+    object Chat{
+        const val MESSAGE_TYPE_LEFT = 0
+        const val MESSAGE_TYPE_RIGHT = 1
+    }
+    object TAG{
+        const val LOGIN = "LoginFragment"
+        const val REGISTER = "RegisterFragment"
+        const val RESET = "ResetFragment"
     }
 }

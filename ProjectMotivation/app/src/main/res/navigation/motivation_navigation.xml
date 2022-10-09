@@ -129,6 +129,21 @@
             app:destination="@id/welcomeFragment"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mainFragment_to_chatSecondFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right"
+            app:destination="@id/chatSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatSecondFragment"
+        android:name="com.example.projectmotivation.content.ChatSecondFragment"
+        android:label="ChatSecondFragment" >
+        <action
+            android:id="@+id/action_chatSecondFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 
 </navigation>

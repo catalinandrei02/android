@@ -7,13 +7,14 @@
     android:layout_height="100dp"
     android:id="@+id/layout_user">
 
-    <ImageView
+    <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/iv_item_userImage"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="10dp"
         android:scaleType="centerCrop"
         android:src="@drawable/blank_profile"
+        app:roundPercent="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

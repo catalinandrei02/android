@@ -14,14 +14,14 @@
     <!-- Edit Texts -->
     <string name="et_register_email">E-mail</string>
     <string name="et_register_password">Password</string>
-    <string name="et_register_password_check">Confrim Password</string>
+    <string name="et_register_password_check">Confirm Password</string>
     <string name="et_register_name">Name</string>
     <string name="et_register_username">Username</string>
     <string name="et_login_email">Your email</string>
     <string name="et_login_password">Your password</string>
     <!-- Text Views -->
     <string name="tv_item_status">Online</string>
-    <string name="tv_motto">Bussines as Unusual</string>
+    <string name="tv_motto">Business as Unusual</string>
     <string name="tv_communication">Communication</string>
     <string name="tv_multitasking">Multitasking</string>
     <string name="tv_growth">Growth</string>
@@ -44,4 +44,9 @@
     <string name="bottom_nav_settings">Settings</string>
     <string name="bottom_nav_chat">Messages</string>
     <string name="btn_save">Save</string>
+    <string name="et_chatsecond_send">Send message</string>
+    <string name="sendbutton">SendButton</string>
+    <string name="empty_msg">empty_msg</string>
+    <string name="tv_home_title">No asta da!</string>
+    <string name="fundal">FUNDAL</string>
 </resources>

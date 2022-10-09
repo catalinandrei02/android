@@ -5,6 +5,9 @@ buildscript {
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.14'
+
+        //Safe Args - Pass data type safety
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.2")
     }
 }
 plugins {

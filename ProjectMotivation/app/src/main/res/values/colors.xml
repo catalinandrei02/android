@@ -27,4 +27,6 @@
     <color name="papaya_whip">#FFCF56</color>
     <color name="india_green">#3DA35D</color>
     <color name="forest_green">#134611</color>
+    <color name="colorItemLeft">#E6E4E4</color>
+    <color name="colorItemRight">#dda15e</color>
 </resources>

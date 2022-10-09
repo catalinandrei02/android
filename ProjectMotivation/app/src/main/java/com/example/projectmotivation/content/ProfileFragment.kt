@@ -20,7 +20,9 @@ import com.bumptech.glide.Glide
 import com.example.projectmotivation.R
 import com.example.projectmotivation.databinding.FragmentProfileBinding
 import com.example.projectmotivation.model.User
-import com.example.projectmotivation.utils.Constants
+import com.example.projectmotivation.utils.Constants.Text.UPLOAD
+import com.example.projectmotivation.utils.Constants.Url.IMAGE
+import com.example.projectmotivation.utils.Constants.Url.USER
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -77,22 +79,25 @@ class ProfileFragment : Fragment() {
                 findNavController().navigate(R.id.action_mainFragment_to_welcomeFragment)
                 Toast.makeText(context, "Logging you out!", Toast.LENGTH_LONG).show()
             }
+            btnReset.setOnClickListener{
+                // TODO: Not yet implemented!
+            }
         }
     }
 
     private fun getUser(){
         val firebase = Firebase.auth.currentUser
-        val dbRef: DatabaseReference = Firebase.database.reference.child(Constants.Url.USER).child(firebase!!.uid)
+        val dbRef: DatabaseReference = Firebase.database.reference.child(USER).child(firebase!!.uid)
         dbRef.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue<User>()
                 user?.let {
-                    binding.tvItemUsername.text = user.userName
+                    binding.tvItemUsername.text = user.name
                     if (user.userImage == ""){
                         binding.ivUserImage.setImageResource(R.drawable.blank_profile)
                     } else {
-                        context?.let { it1 -> Glide.with(it1).load(user.userImage).into(binding.ivUserImage) }
+                        context?.let { it1 -> Glide.with(it1).load(user.userImage.toString()).into(binding.ivUserImage) }
                     }
                 }
             }
@@ -107,7 +112,7 @@ class ProfileFragment : Fragment() {
     private fun chooseImg(){
         val intent = Intent()
         intent.apply {
-            type = Constants.Url.IMAGE
+            type = IMAGE
             action = Intent.ACTION_GET_CONTENT
         }
         resultLauncher.launch(Intent.createChooser(intent,"select image"))
@@ -123,8 +128,10 @@ class ProfileFragment : Fragment() {
                 val source: ImageDecoder.Source =
                     ImageDecoder.createSource(requireContext().contentResolver,filePath!!)
                 val bitmap = ImageDecoder.decodeBitmap(source)
-                binding.ivUserImage.setImageBitmap(bitmap)
-                binding.btnSave.visibility = View.VISIBLE
+                binding.apply {
+                    ivUserImage.setImageBitmap(bitmap)
+                    btnSave.visibility = View.VISIBLE
+                }
             } catch (e: IOException) {
                 e.printStackTrace()
             }
@@ -133,19 +140,19 @@ class ProfileFragment : Fragment() {
 
     private fun uploadImg(){
         if (filePath != null){
-            val dialog = setProgressDialog(requireContext(), Constants.Text.UPLOAD)
+            val dialog = setProgressDialog(requireContext(), UPLOAD)
             dialog.show()
 
             val firebase = Firebase.auth.currentUser
-            val ref:StorageReference = storageRef.child(Constants.Url.IMAGE + UUID.randomUUID().toString())
+            val ref:StorageReference = storageRef.child(IMAGE + UUID.randomUUID().toString())
             ref.putFile(filePath!!)
                 .addOnSuccessListener {
                     val hashMap: HashMap<String, String> = HashMap()
                     hashMap["userImage"] = filePath.toString()
                     firebase?.let {
-                        Firebase.database.reference.child(Constants.Url.USER).child(it.uid)
+                        Firebase.database.reference.child(USER).child(it.uid)
                     }?.updateChildren(hashMap as Map<String, Any>)
-
+                    binding.btnSave.visibility = View.GONE
                     dialog.hide()
                     Toast.makeText(context, "Uploaded", Toast.LENGTH_SHORT).show()
                 }

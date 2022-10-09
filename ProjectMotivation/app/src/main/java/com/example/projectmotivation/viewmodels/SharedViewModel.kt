@@ -5,7 +5,5 @@ import androidx.lifecycle.AndroidViewModel
 
 
 class SharedViewModel(vModel: Application): AndroidViewModel(vModel) {
-
-    // TODO: Optimize Code Here
-
+    // TODO: Not yet implemented!
 }

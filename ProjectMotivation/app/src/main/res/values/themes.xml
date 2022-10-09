@@ -82,11 +82,21 @@
         <item name="android:fontFamily">@font/harmony</item>
     </style>
 
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
     <style name="Theme.ProjectMotivation.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="TextInputEditText_Chat" parent="ThemeOverlay.Material3.AutoCompleteTextView.FilledBox.Dense">
+        <item name="background">@drawable/bg_text_filled</item>
+        <item name="android:fontFamily">@font/gotham_light</item>
+
+    </style>
     <style name="Theme.ProjectMotivation.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.ProjectMotivation.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
