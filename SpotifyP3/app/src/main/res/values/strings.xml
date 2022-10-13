@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Spotify P3</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="spotify_logo">LOGO</string>
+    <string name="tv_login">Log in</string>
+    <string name="tv_title">Millions of Songs.\nFree on Spotify.</string>
+    <string name="sign_up">Sign up for free</string>
+    <string name="sign_up_google">Continue with Google</string>
+    <string name="sign_up_facebook">Continue with Facebook</string>
+    <string name="tv_register_title">Create account</string>
+    <string name="back_button">Back Button</string>
+    <string name="tv_register_email">What\'s your email?</string>
+    <string name="tv_register_password">Create a password</string>
+    <string name="tv_register_gender">What\'s your gender?</string>
+    <string name="tv_register_name">What\'s your name?</string>
+    <string name="btn_create_account">Create an account</string>
+    <string name="tv_login_title">Login to continue.</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="btn_remember">Remember me</string>
+    <string name="btn_login">Log in</string>
+    <string name="tv_register">Don\'t have an account? <b>SIGNUP</b></string>
+    <string name="tv_reset">RESET PASSWORD</string>
+    <string name="btn_home">Home</string>
+    <string name="btn_search">Search</string>
+    <string name="btn_library">Library</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

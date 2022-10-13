@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.spotifyp3.MainActivity">
+    <item
+        android:id="@+id/navBar_home"
+        android:orderInCategory="100"
+        android:title="@string/btn_home"
+        android:iconTint="@color/white"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/navBar_search"
+        android:orderInCategory="100"
+        android:title="@string/btn_search"
+        android:iconTint="@color/white"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/navBar_library"
+        android:orderInCategory="100"
+        android:title="@string/btn_library"
+        android:iconTint="@color/white"
+        android:icon="@drawable/ic_library"
+        app:showAsAction="never" />
+</menu>
