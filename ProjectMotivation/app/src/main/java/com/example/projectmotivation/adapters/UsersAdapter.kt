@@ -40,6 +40,7 @@ class UsersAdapter(private val context: Context, private val userList: ArrayList
         holder.userLayout.setOnClickListener {
             listener?.invoke(user.userId)
         }
+
     }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){

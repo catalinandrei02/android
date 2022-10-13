@@ -9,9 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.spotifyp3.R
+import com.example.spotifyp3.data.UserEntity
+import com.example.spotifyp3.data.UserViewModel
 import com.example.spotifyp3.databinding.FragmentRegisterBinding
 import com.example.spotifyp3.utils.Constants
 import com.example.spotifyp3.utils.Constants.TAG.REGISTER
@@ -37,6 +40,7 @@ class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var dbRef: DatabaseReference
+    private lateinit var mUserViewModel: UserViewModel
     private val compositeDisposable =  CompositeDisposable()
 
     override fun onCreateView(
@@ -45,6 +49,7 @@ class RegisterFragment : Fragment() {
     ): View {
         binding = FragmentRegisterBinding.inflate(inflater,container,false)
         auth = Firebase.auth
+        mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         return binding.root
     }
 
@@ -86,6 +91,8 @@ class RegisterFragment : Fragment() {
                     auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener {
                             if (it.isSuccessful) {
+                                val userData = UserEntity(0,email,name, gender,"")
+                                mUserViewModel.addUser(userData)
                                 val user: FirebaseUser? = auth.currentUser
                                 val userId:String = user!!.uid
                                 dbRef = Firebase.database.reference.child(USER).child(userId)
@@ -94,7 +101,7 @@ class RegisterFragment : Fragment() {
                                 hashMap["userName"] = name
                                 hashMap["userGender"] = gender
                                 hashMap["userImage"] = ""
-                                dbRef.setValue(hashMap).addOnSuccessListener {
+                                dbRef.setValue(hashMap).addOnCompleteListener {
                                     findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                                 }
                             } else {

@@ -13,11 +13,9 @@ import com.example.projectmotivation.utils.Constants.Chat.MESSAGE_TYPE_RIGHT
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
-
 @GlideModule
 class ChatAdapter(private val chatList: ArrayList<Chat>):
     RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
-
 
     private lateinit var firebaseUser: FirebaseUser
 
@@ -51,5 +49,4 @@ class ChatAdapter(private val chatList: ArrayList<Chat>):
             MESSAGE_TYPE_LEFT
         }
     }
-
 }

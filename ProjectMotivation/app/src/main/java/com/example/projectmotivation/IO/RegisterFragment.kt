@@ -15,6 +15,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.projectmotivation.R
 import com.example.projectmotivation.databinding.FragmentRegisterBinding
 import com.example.projectmotivation.utils.Constants
+import com.example.projectmotivation.utils.Constants.TAG.REGISTER
+import com.example.projectmotivation.utils.Constants.Url.USER
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -37,8 +39,6 @@ class RegisterFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var dbRef: DatabaseReference
     private val compositeDisposable =  CompositeDisposable()
-    private val TAG = "RegisterFragment"
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -116,7 +116,7 @@ class RegisterFragment : Fragment() {
                             if (it.isSuccessful) {
                                 val user: FirebaseUser? = auth.currentUser
                                 val userId:String = user!!.uid
-                                dbRef = Firebase.database.reference.child(Constants.Url.USER).child(userId)
+                                dbRef = Firebase.database.reference.child(USER).child(userId)
                                 val hashMap: HashMap<String,String> = HashMap()
                                 hashMap["userId"] = userId
                                 hashMap["userName"] = username
@@ -132,7 +132,7 @@ class RegisterFragment : Fragment() {
                         }
 
                 }
-                Log.d(TAG,"Time to run register: $time ms.")
+                Log.d(REGISTER,"Time to run register: $time ms.")
             }
         }
     }

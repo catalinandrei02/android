@@ -5,7 +5,8 @@ buildscript {
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.14'
-
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:2.44"
         //Safe Args - Pass data type safety
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.2")
     }
@@ -14,4 +15,5 @@ plugins {
     id 'com.android.application' version '7.3.0' apply false
     id 'com.android.library' version '7.3.0' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
+    id("com.google.dagger.hilt.android") version "2.44" apply false
 }

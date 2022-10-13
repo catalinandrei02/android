@@ -6,4 +6,73 @@
     android:layout_height="match_parent"
     android:background="@color/darkest_grey"
     android:padding="20dp"
-    tools:context=".ui.HomeFragment"/>
+    tools:context=".ui.HomeFragment">
+
+    <TextView
+        android:id="@+id/tv_welcome_msg"
+        style="@style/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/good_morning"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_bell"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_bell"
+        app:layout_constraintEnd_toStartOf="@+id/iv_recent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_recent"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_recent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_settings"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_settings"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_music"
+        style="@style/Button.normal"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/btn_music"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome_msg"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/btn_podcast"
+        style="@style/Button.Green"
+        android:layout_width="140dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/metropolis_light"
+        android:text="@string/btn_podcast"
+        android:textAllCaps="false"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/btn_music"
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome_msg"
+        tools:ignore="TouchTargetSizeCheck" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

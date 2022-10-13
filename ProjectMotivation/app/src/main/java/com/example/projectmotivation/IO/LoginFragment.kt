@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.projectmotivation.R
 import com.example.projectmotivation.databinding.FragmentLoginBinding
 import com.example.projectmotivation.utils.Constants
+import com.example.projectmotivation.utils.Constants.TAG.LOGIN
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -32,7 +33,6 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var auth: FirebaseAuth
     private val compositeDisposable =  CompositeDisposable()
-    private val TAG = "LoginFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -96,7 +96,7 @@ class LoginFragment : Fragment() {
                             }
                         }
                 }
-                Log.d(TAG,"Time to run log-in: $time ms.")
+                Log.d(LOGIN,"Time to run log-in: $time ms.")
             }
         }
     }

@@ -5,56 +5,59 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.GridView
+import android.widget.ListView
 import com.example.spotifyp3.R
+import com.example.spotifyp3.adapters.ListAdapter
+import com.example.spotifyp3.adapters.SearchAdapter
+import com.example.spotifyp3.databinding.FragmentSearchBinding
+import com.example.spotifyp3.ui.settings.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SearchFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentSearchBinding
+    private lateinit var listView: GridView
+    lateinit var arrayList: Array<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+    ): View {
+        binding = FragmentSearchBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        listView = binding.searchMenu
+        arrayList = resources.getStringArray(R.array.search_menu)
+        val arrayAdapter = context?.let { SearchAdapter(it, arrayList) }
+        listView.adapter = arrayAdapter
+        listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+            when (position) {
+                0 -> replaceFragment(AccountFragment())
+                1 -> replaceFragment(DataSaverFragment())
+                2 -> replaceFragment(LanguagesFragment())
+                3 -> replaceFragment(PlaybackFragment())
+                4 -> replaceFragment(ExplicitFragment())
+                5 -> replaceFragment(DevicesFragment())
+                6 -> replaceFragment(CarFragment())
+                7 -> replaceFragment(SocialFragment())
+                8 -> replaceFragment(AssistantFragment())
+                9 -> replaceFragment(AudioQualityFragment())
+                10 -> replaceFragment(VideoQualityFragment())
+                11 -> replaceFragment(StorageFragment())
+                else -> {}
             }
+        }
+    }
+
+    private fun replaceFragment(fragment: Fragment){
+
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout,fragment)
+        fragmentTransaction.commit()
     }
 }

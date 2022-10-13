@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.projectmotivation.R
 import com.example.projectmotivation.databinding.FragmentResetBinding
 import com.example.projectmotivation.utils.Constants
+import com.example.projectmotivation.utils.Constants.TAG.RESET
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -31,7 +32,7 @@ class ResetFragment : Fragment() {
     private lateinit var binding: FragmentResetBinding
     private lateinit var auth: FirebaseAuth
     private val compositeDisposable =  CompositeDisposable()
-    private val TAG = "ResetFragment"
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -96,7 +97,7 @@ class ResetFragment : Fragment() {
                     }
                 }
             }
-            Log.d(TAG,"Time to run code: $time ms.")
+            Log.d(RESET,"Time to run code: $time ms.")
         }
     }
 

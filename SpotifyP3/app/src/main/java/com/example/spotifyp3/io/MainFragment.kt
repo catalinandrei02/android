@@ -10,6 +10,7 @@ import com.example.spotifyp3.databinding.FragmentMainBinding
 import com.example.spotifyp3.ui.HomeFragment
 import com.example.spotifyp3.ui.LibraryFragment
 import com.example.spotifyp3.ui.SearchFragment
+import com.example.spotifyp3.ui.SettingsFragment
 
 
 class MainFragment : Fragment() {
